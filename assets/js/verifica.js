@@ -1,0 +1,1 @@
+function verifica() { if (document.formulario.senha.value =='') { alert("Por favor, preencha os campos corretamente."); return; } }

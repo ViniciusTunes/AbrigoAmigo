@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewpPort" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/css/styleLogin.css">
+
+    <link rel="stylesheet" href="fonts/icomoon/style.css">
+
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+
+
+    <title>Alterar Senha</title>
+</head>
+<body>
+<div class="main-login">
+    <div class="left-login">
+        <h1>LOCAL PARA ALTERAR SENHA</h1>
+        <img src="assets/img/login-animated.svg" class="left-login-image" alt="Animação login">
+    </div>
+    <div class="right-login">
+        <div class="card-login">
+            <h1>TROCAR SENHA</h1>
+            
+            <div class="textfield">
+            <form class="textfield" action="alterar.php" method="POST">
+                <label for="cpf">Qual o seu CPF?</label>
+                <input type="text" name="cpf">
+                 </div>
+                 <div class="textfield">
+                    <label for="senha">Senha Antiga</label>
+                    <input type="password" name="senha">
+                    <br>
+                </div>
+
+                <div class="textfield">
+                    <label for="senha">Nova Senha</label>
+                    <input type="password" name="senhanova">
+                    <br>
+                </div>
+
+                <button class="btn-login">Alterar Senha</button>
+            </form>
+
+            <form action="http://abrigoamigo.atwebpages.com">
+         <button type="submit" id="btn-voltar" class="btn-voltar">Voltar</button>
+      </form>
+                
+               
+            
+            </div>
+                <div class="circle"></div>
+       </div>
+  </div>
+
+
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/css/styleCadastroONG.css">
+
+    <!-- SCRIPTS -->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script> <!-- Alertas -->
+    <script src="https://cdn.jsdelivr.net/npm/js-brasil/js-brasil.js"></script> <!-- Validação de CPF -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script> <!-- Dependência JS-Brasil -->
+
+    <title>Doação de Alimentos</title>
+    
+     <link rel = "icon" href = "assets/img/Icon_TCC.jpg" type = "image/x-icon">
+</head>
+
+<body>
+    <div class="container">
+        <div class="form-image">
+            <img src="assets/img/charity-animate.svg" alt="">
+        </div>
+        <div class="form">
+            <form action="doacao.php" method="POST" onsubmit="return valida_form(this)">
+                <div class="form-header">
+                    <div class="title">
+                        <h1>Doação de Alimentos</h1>
+                    </div>
+                    <div class="voltar-button">
+                        <button><a href="lista.php" id="pagCadastro">Lista de Doações</a></button>
+                        <button><a href="http://abrigoamigo.atwebpages.com/" id="voltar">Voltar</a></button>
+                    </div>
+                </div>
+                <div class="input-group">
+                    <div class="input-box">
+                        <label for="cpf">CPF*</label>
+                        <input id="cpf" type="text" name="cpf" placeholder="Digite o seu CPF" maxlength="14">
+                    </div>
+                
+                    <div class="input-box">
+                        <label for="arroz">Arroz</label>
+                        <input id="arroz" type="text" name="arroz" placeholder="Quantidade em Unidade" maxlength="2">
+                    </div>
+                    
+                    <div class="input-box">
+                        <label for="feijao">Feijão</label>
+                        <input id="feijao" type="text" name="feijao" placeholder="Quantidade em Unidade" maxlength="2">
+                    </div>
+
+                    <div class="input-box">
+                        <label for="macarrao">Macarrão</label> 
+                        <input id="macarrao" type="text" name="macarrao" placeholder="Quantidade em Pares" maxlength="2">
+                    </div>
+                                   
+                    <div class="input-box">
+                        <label for="acucar">Açúcar</label>
+                        <input id="acucar" type="text" name="acucar" placeholder="Quantidade em Unidade" maxlength="2">
+                    </div>
+                    
+                    <div class="input-box">
+                        <label for="sal">Sal</label>
+                        <input id="sal" type="text" name="sal" placeholder="Quantidade em Unidade" maxlength="2">
+                    </div>
+                    
+                    <div class="input-box">
+                        <label for="farinha">Farinha</label>
+                        <input id="farinha" type="text" name="farinha" placeholder="Quantidade em Unidade" maxlength="2">
+                    </div>
+                    
+                    <div class="input-box">
+                        <label for="oleo">Óleo</label>
+                        <input id="oleo" type="text" name="oleo" placeholder="Quantidade em Unidade" maxlength="10">
+                    </div>
+                    
+                    <div class="input-box">
+                        <label for="enlatados">Enlatados</label>
+                        <input id="enlatados" type="text" name="enlatados" placeholder="Quantidade em Unidade" maxlength="10">
+                    </div>
+                    
+                    <div class="input-box">
+                        <label for="">Data</label>
+                        <input id="data" type="date" name="data" placeholder="DD/MM/YYYY" maxlength="10">
+                    </div>
+                    <br><br><br><br><br>
+                        <h1 style="font-size:15px">&nbsp&nbsp&nbsp&nbsp</h1> 
+                        <div class="voltar-button"><button><a href="http://abrigoamigo.atwebpages.com/doacaoroupas.html" id="voltar">Roupas</a></button></div>
+                        <div class="voltar-button"><button><a href="http://abrigoamigo.atwebpages.com/doacaolimpeza.html" id="voltar">Limpeza</a></button></div>
+                    </div>
+                    <br>
+
+                        <div class="cadastrar-button">
+                            <input type="submit" value="Efetuar doação" id="cadastro">
+                        </div>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>
+
+
+<script>
+  $("#cpf").on("blur", function(){
+      let cpf_value = $(this).val();
+    
+      if(jsbrasil.validateBr.cpf(cpf_value)) {
+        swal({
+    title: 'CPF VÁLIDO.',
+    icon: 'success'
+});
+      } else {
+        swal({
+    title: 'CPF INVÁLIDO.',
+    icon: 'error'
+});
+      }
+  });
+
+</script>

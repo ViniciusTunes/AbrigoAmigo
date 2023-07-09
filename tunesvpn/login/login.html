@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+
+<head>
+    <style>
+        body,
+        html {
+            background: rgb(24, 24, 28) !important;
+        }
+    </style>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tela de Login</title>
+
+    <!-- CSS / Bootstrap -->
+    <link href="../assets2/css/imports.css" rel="stylesheet">
+
+    <!-- AOS -->
+    <link href="../../unpkg.com/aos%402.3.1/dist/aos.css" rel="stylesheet">
+
+    <!-- FONT AWESOME -->
+    <link rel="stylesheet" href="../../use.fontawesome.com/releases/v5.8.1/css/all.css" />
+
+    <!-- JQUERY -->
+    <script src="../../ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- SNACKBAR -->
+    <link rel="stylesheet" href="../assets2/css/snackbar.css" />
+    <script src="../assets2/js/snackbar.js"></script>
+
+    <!-- AOS -->
+    <script src="../../unpkg.com/aos%402.3.1/dist/aos.js"></script>
+    
+    <link rel="shortcut icon" type="image/x-icon" href="../assets2/img/logo.png">
+    
+        <!-- SEO -->
+    <meta name="robots" content="index">
+    <meta name="theme-color" content="#08BA92">
+    <meta property="og:site_name" content="" />
+    <meta property="og:url" content="" />
+    <meta property="og:type" content="article" />
+    <meta property="og:image" content="https://slapp.in/assets2/img/logo.png" />
+    <meta property="og:description" content="" />
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    
+</head>
+
+<body>
+    <section id="modal-login" class="d-none" onclick="checkForClose()">
+        <div class="modal-box">
+            <div class="row justify-content-center align-items-center title">
+                <div class="col-12">
+                    <h2 id="modal-title">Redefinir sua senha</h2>
+                </div>
+                <div class="col-12 mt-3">
+                    <form method="post" id="reset-form">
+                        <div class="form-input-icon mb-3">
+                            <i class="fas fa-envelope active"></i>
+                            <input class="auth-input" type="email" placeholder="Email" name="email" autocomplete="off" required>
+                        </div>
+                        <button href="#" class="button primary d-block w-100" id="reset-button">Redefinir Senha</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="login">
+    <a href="../../index.html">
+            <img src="../assets2/img/logo.png" alt="" style="width: 3.5rem;">
+         </a>
+        <div class="container h-100">
+            <div class="row justify-content-center align-items-center h-100">
+                <div class="col-md-10 col-lg-5">
+                    <div class="login-box" data-aos="fade-up" data-aos-duration="1500">
+                        <h2>Faça Login</h2>
+                        <p>Faça login para efetuar sua doação.</p>
+
+                        <!-- LOGIN FORM -->
+                        <form method="POST" action="login.php">
+                            <div class="form-input-icon mb-3 mt-4">
+                                <i class="fas fa-user"></i>
+                                <input class="auth-input" type="text" placeholder="CPF" name="cpf" autocomplete="off" required minlength="3">
+                            </div>
+                            <div class="form-input-icon mb-3">
+                                <i class="fas fa-lock"></i>
+                                <input class="auth-input" type="password" placeholder="Senha" name="senha" autocomplete="off" required minlength="3" pattern="^(?!^\s.*$)(?!^.*\s$)[ -~]+$">
+                            </div>
+                            <input type="hidden" id="g-captcha-response" name="g-captcha-response" />
+                                                        <button class="button primary d-block mt-3 w-100">Entrar</button>
+                        </form>
+                        <!-- ~LOGIN FORM -->
+                    </div>
+                    <p class="text-center bottom-text" data-aos="fade-up" data-aos-duration="2000">Não tem uma conta? <a href="../../register.html"><strong>Cadastre-se</strong></a></p>                    <a class="text-center bottom-text-green" href="../../loginAlterar.html" data-aos="fade-up" data-aos-duration="2500">Alterar senha</a>
+                </div>
+            </div>
+        </div>
+        <div class="g-recaptcha captcha-bottom" data-sitekey="6LdaJIMdAAAAAJrb3iZGCwnXSiA7tmdT2mTBy9Jd" data-badge="inline" data-size="invisible" data-callback="setResponse">
+        </div>
+        <div class="overlay-top-right"></div>
+        <div class="overlay-bottom-right"></div>
+        <div class="overlay-bottom-left"></div>
+    </section>
+</body>
+
+<!-- BOOTSTRAP JS -->
+<script src="../../cdn.jsdelivr.net/npm/%40popperjs/core%402.5.4/dist/umd/popper.min.js" integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU" crossorigin="anonymous"></script>
+<script src="../assets/js/bootstrap.js"></script>
+
+<!-- CORE -->
+<script src="../assets/js/core.js"></script>
+
+<!-- Start AOS -->
+<script>
+    AOS.init({
+        disable: 'mobile',
+        once: true,
+    });
+</script>
+
+<script>
+    $("#login-form").submit(function(e) {
+        e.preventDefault();
+
+        if ($('#login-button').hasClass('disabled'))
+            return;
+
+        $('#login-button').addClass('disabled');
+        var data = new FormData($('#login-form')[0]);
+        $.ajax({
+            url: '../php/login/login.php',
+            contentType: "text/html; charset=UTF-8",
+            type: 'POST',
+            data: data,
+            cache: false,
+            async: true,
+            processData: false,
+            contentType: false,
+            success: function(response) {
+                grecaptcha.execute();
+                switch (response) {
+                    case "success":
+                        notify("Successfully logged in.", 1);
+                        setTimeout(
+                            function() {
+                                $(location).attr('href', '../login/login.html');
+                            }, 2500);
+                        break;
+                    case "success_redirect":
+                        notify("Successfully logged in.", 1);
+                        setTimeout(
+                            function() {
+                                $(location).attr('href', '../login/login.html');
+                            }, 2500);
+                        break;
+                    case "empty_data":
+                        notify("Os campos não podem ficar vazios..", 0);
+                        break;
+                    case "account_invalid":
+                        notify("Nenhuma conta foi encontrada ou sua senha é inválida.", 0);
+                        break;
+                    case "captcha_failed":
+                        notify("O Captcha falhou, tente novamente.", 0);
+                        break;
+                    default:
+                        var split_ = response.split(":");
+                        if (split_[0] == "banned") {
+                            notify("Você foi banido da TunesVPN. Reason: " + split_[1], 0);
+                        }
+                        break;
+                }
+            },
+            error: function() {
+                notify("Ocorreu algum erro desconhecido, tente novamente mais tarde.", 0);
+            }
+        });
+        setTimeout(
+            function() {
+                $('#login-button').removeClass('disabled').delay(800);
+            }, 700);
+    });
+
+    function openModal() {
+        $("#modal-login").fadeIn(300);
+        $("#modal-login").removeClass("d-none");
+        $("#modal-login input").val("");
+    }
+
+    function closeModal() {
+        $("#modal-login").fadeOut(300);
+    }
+
+    function checkForClose() {
+        if (!($("#modal-login>.modal-box").is(':hover'))) {
+            closeModal();
+        }
+    }
+</script>
+
+<script>
+    $("#reset-form").submit(function(e) {
+        e.preventDefault();
+
+        if ($('#reset-button').hasClass('disabled'))
+            return;
+
+        $('#reset-button').addClass('disabled');
+        var data = new FormData($('#reset-form')[0]);
+        $.ajax({
+            url: '../php/reset_password/reset_password.php',
+            contentType: "text/html; charset=UTF-8",
+            type: 'POST',
+            data: data,
+            cache: false,
+            async: true,
+            processData: false,
+            contentType: false,
+            success: function(response) {
+                switch (response) {
+                    case "mail_sent":
+                        notify("O e-mail de redefinição de senha foi enviado com sucesso.", 1);
+                        break;
+                    case "mail_not_sent":
+                        notify("Email não enviado, tente novamente em alguns minutos.", 1);
+                        break;
+                    case "wait_delay":
+                        notify("Você precisa esperar alguns minutos para fazer uma nova solicitação de e-mail.", 2);
+                        break;
+                }
+            },
+            error: function() {
+                notify("Ocorreu algum erro desconhecido, tente novamente mais tarde.", 0);
+            }
+        });
+        setTimeout(
+            function() {
+                $('#reset-button').removeClass('disabled').delay(800);
+            }, 700);
+    });
+</script>
+
+<script src="../../www.google.com/recaptcha/apida10.js?onload=onloadCallback" async defer></script>
+<script>
+    var onloadCallback = function() {
+        grecaptcha.execute();
+    };
+
+    function setResponse($response) {
+        document.getElementById('g-captcha-response').value = $response;
+    }
+</script>
+</html>

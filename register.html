@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<link rel = "icon" href = "assets/img/Icon_TCC.jpg" type = "image/x-icon">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/css/styleCadastro.css">
+
+    <!-- SCRIPTS -->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script> <!-- Alertas -->
+    <script src="https://cdn.jsdelivr.net/npm/js-brasil/js-brasil.js"></script> <!-- Validação de CPF -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script> <!-- Dependência JS-Brasil -->
+    
+    <title>Cadastro de Doadores</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="form-image">
+            <img src="assets/img/cadastro-animated.svg" alt="">
+        </div>
+        <div class="form">
+            <form action="cadastrar.php" method="POST" onsubmit="return valida_form(this)">
+                <div class="form-header">
+                    <div class="title">
+                        <h1>Cadastro de Doadores</h1>
+                    </div>
+                    <div class="voltar-button">
+                        <button><a href="registerONG.html" id="cadastroONG">Cadastro de ONG</a></button>
+                        <button><a href="http://abrigoamigo.atwebpages.com/" id="voltar">Voltar</a></button>
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <div class="input-box">
+                        <label for="nome">Nome Completo*</label>
+                        <input id="nome" type="text" name="nome" placeholder="Digite o Nome" maxlength="50">
+                    </div>
+                    
+                    <div class="input-box">
+                        <label for="cpf">CPF*</label>
+                        <input id="cpf" type="text" name="cpf" placeholder="xxx.xxx.xxx-xx" maxlength="14">
+                    </div>
+                    
+                    <div class="input-box">
+                        <label for="cnpj">CNPJ</label>
+                        <input id="cnpj" type="text" name="cnpj" placeholder="xx.xxx.xxx/0001-xx" maxlength="18">
+                    </div>
+
+                    <div class="input-box">
+                        <label for="rg">RG*</label>
+                        <input id="rg" type="text" name="rg" placeholder="Digite seu RG" maxlength="12">
+                    </div>
+                    
+                    <div class="input-box">
+                        <label for="email">E-mail*</label>
+                        <input id="email" type="email" name="email" placeholder="Digite seu E-mail" maxlength="100">
+                    </div>
+
+                    <div class="input-box">
+                        <label for="numero">Celular*</label>
+                        <input id="numero" type="tel" name="numero" placeholder="(xx) xxxxx-xxxx" maxlength="15">
+                    </div>
+                                      
+                    <div class="input-box">
+                        <label for="endereco">Endereço*</label>
+                        <input id="endereco" type="text" name="endereco" placeholder="Digite sua Rua" maxlength="40">
+                    </div>
+                    
+                    
+                    <div class="input-box">
+                        <label for="cidade">Cidade*</label>
+                        <input id="cidade" type="text" name="cidade" placeholder="Digite sua cidade" maxlength="20">
+                    </div> 
+                    
+                    <div class="input-box">
+                        <label for="cep">Cep*</label>
+                        <input id="cep" type="text" name="cep" placeholder="xxxxx-xxx" maxlength="40">
+                    </div>
+                    
+                    <div class="input-box">
+                        <label for="numerocasa">Número*</label>
+                        <input id="numerocasa" type="text" name="numerocasa" placeholder="Número da Casa" maxlength="6">
+                    </div>
+
+                    <div class="input-box">
+                        <label for="referencia">Referência</label>
+                        <input id="referencia" type="text" name="referencia" placeholder="Digite a referência" maxlength="50">
+                    </div>
+                    
+                    <div class="input-box">
+                        <label for="bairro">Bairro*</label>
+                        <input id="bairro" type="text" name="bairro" placeholder="Digite seu Bairro" maxlength="50">
+                    </div>
+                    
+                    <div class="input-box">
+                        <label for="estado">Estado*</label>
+                        <input id="estado" type="text" name="estado" placeholder="Digite seu Estado" maxlength="2">
+                    </div>
+                    
+                    <div class="input-box">
+                        <label for="complemento">Complemento</label>
+                        <input id="complemento" type="text" name="complemento" placeholder="Digite o Complemento" maxlength="50">
+                    </div>
+                    
+                    <div class="input-box">
+                        <label for="inscricao">Inscrição Estadual</label>
+                        <input id="inscricao" type="text" name="inscricao" placeholder="Digite sua Inscrição" maxlength="10">
+                    </div>
+                    
+
+                    <div class="input-box">
+                        <label for="site">Site</label>
+                        <input id="site" type="text" name="site" placeholder="Digite o Site" maxlength="50">
+                    </div>
+                    
+                    <div class="input-box">
+                        <label for="senha">Senha*</label>
+                        <input id="senha" type="password" name="senha" placeholder="Digite sua Senha" maxlength="25">
+                    </div>
+
+                </div>
+
+                <div class="cadastrar-button">
+            <input type="submit" value="Cadastre-se" id="cadastro">
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>
+
+<script type="text/javascript" language="javascript">
+
+function valida_form (){
+if(document.getElementById("nome").value == ""){
+swal({
+    title: 'Campo inválido!',
+    text: 'Preencha o campo NOME.',
+    icon: 'error'
+});
+document.getElementById("nome").focus();
+return false
+}
+
+else if(document.getElementById("cpf").value == ""){
+swal({
+    title: 'Campo inválido!',
+    text: 'Preencha o campo CPF.',
+    icon: 'error'
+});
+document.getElementById("cpf").focus();
+return false
+}
+
+else if(document.getElementById("cnpj").value == ""){
+swal({
+    title: 'Campo inválido!',
+    text: 'Preencha o campo CNPJ.',
+    icon: 'error'
+});
+document.getElementById("cpf").focus();
+return false
+}
+
+else if(document.getElementById("rg").value == ""){
+swal({
+    title: 'Campo inválido!',
+    text: 'Preencha o campo RG.',
+    icon: 'error'
+});
+document.getElementById("rg").focus();
+return false
+}
+
+else if(document.getElementById("numero").value == ""){
+swal({
+    title: 'Campo inválido!',
+    text: 'Preencha o campo CELULAR.',
+    icon: 'error'
+});
+document.getElementById("numero").focus();
+return false
+}
+
+else if(document.getElementById("endereco").value == ""){
+swal({
+    title: 'Campo inválido!',
+    text: 'Preencha o campo ENDEREÇO.',
+    icon: 'error'
+});
+document.getElementById("endereco").focus();
+return false
+}
+
+else if(document.getElementById("cidade").value == ""){
+swal({
+    title: 'Campo inválido!',
+    text: 'Preencha o campo CIDADE.',
+    icon: 'error'
+});
+document.getElementById("cidade").focus();
+return false
+}
+
+else if(document.getElementById("numerocasa").value == ""){
+swal({
+    title: 'Campo inválido!',
+    text: 'Preencha o campo NÚMERO da CASA.',
+    icon: 'error'
+});
+document.getElementById("numerocasa").focus();
+return false
+}
+
+
+else if(document.getElementById("bairro").value == ""){
+swal({
+    title: 'Campo inválido!',
+    text: 'Preencha o campo BAIRRO.',
+    icon: 'error'
+});
+document.getElementById("bairro").focus();
+return false
+}
+
+
+else if(document.getElementById("senha").value == ""){
+swal({
+    title: 'Campo inválido!',
+    text: 'Preencha o campo SENHA.',
+    icon: 'error'
+});
+document.getElementById("senha").focus();
+return false
+}
+}
+</script>
+
+<script>
+  $("#cpf").on("blur", function(){
+      let cpf_value = $(this).val();
+    
+      if(jsbrasil.validateBr.cpf(cpf_value)) {
+        swal({
+    title: 'CPF VÁLIDO.',
+    icon: 'success'
+});
+      } else {
+        swal({
+    title: 'CPF INVÁLIDO.',
+    icon: 'error'
+});
+      }
+  });
+
+</script>

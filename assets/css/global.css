@@ -1,0 +1,120 @@
+/* button */
+
+.button {
+    padding: .67rem 1.9rem;
+    font-weight: 600;
+    font-size: .85rem;
+    text-decoration: none;
+    font-size: .95rem;
+    box-shadow: 0px 0px 20px 2px rgba(0, 0, 0, 0.02);
+    transition: box-shadow .3s ease, background-color .3s ease;
+    border-radius: 5px;
+    border: 0;
+}
+
+.button.low-padding {
+    padding: .35rem 1.9rem;
+}
+
+.button.low-weight {
+    font-weight: 500;
+}
+
+.button.medium-size {
+    font-size: .8rem;
+}
+
+.button.primary.outline {
+    border: 1px solid var(--primary) !important;
+    background: none !important;
+}
+
+.button.primary.outline:hover {
+    box-shadow: none !important;
+}
+
+.button.primary-shadow {
+    box-shadow: 0px 4px 10px 2px var(--primary-opaque-strong);
+}
+
+.button.uppercase {
+    text-transform: uppercase !important;
+}
+
+.button.disabled {
+    background: #292929 !important;
+    box-shadow: none;
+    cursor: default;
+}
+
+.button.primary.outline.disabled {
+    border: 1px solid #292929 !important;
+    color: #757575;
+}
+
+.button.primary.outline.disabled:hover {
+    background-color: transparent !important;
+}
+
+.button.disabled:hover {
+    background: #292929 !important;
+    box-shadow: none !important;
+}
+
+.button:focus {
+    outline: none;
+}
+
+.button:hover {
+    color: white;
+}
+
+.button i {
+    margin-left: .5rem;
+    opacity: .8;
+}
+
+.button.primary {
+    background: var(--primary);
+}
+
+.button.rounded {
+    border-radius: 100px;
+}
+
+.button.white {
+    background-color: white;
+    color: var(--primary);
+}
+
+.rounded-circle {
+    border-radius: 100px !important;
+}
+
+.button.primary:hover {
+    background: var(--primary);
+    box-shadow: 0px 0px 10px 2px var(--primary-opaque);
+}
+
+.button.btn-product {
+    background-color: rgb(255, 255, 255, .02);
+    color: rgb(255, 255, 255, .65);
+    padding: .4rem 2rem;
+    font-size: .8rem;
+    font-weight: 400;
+    display: block;
+    text-align: center;
+    position: relative;
+}
+
+.button.button.btn-product.notification::after {
+    content: "";
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    background-color: #D16666;
+    top: 50%;
+    margin-left: .4rem;
+    transform: translateY(-50%);
+    border-radius: 50px;
+}

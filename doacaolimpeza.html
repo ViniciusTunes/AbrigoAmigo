@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/css/styleCadastroONG.css">
+
+    <!-- SCRIPTS -->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script> <!-- Alertas -->
+    <script src="https://cdn.jsdelivr.net/npm/js-brasil/js-brasil.js"></script> <!-- Validação de CPF -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script> <!-- Dependência JS-Brasil -->
+
+    <title>Doação Limpeza</title>
+    
+     <link rel = "icon" href = "assets/img/Icon_TCC.jpg" type = "image/x-icon">
+</head>
+
+<body>
+    <div class="container">
+        <div class="form-image">
+            <img src="assets/img/charity-animate.svg" alt="">
+        </div>
+        <div class="form">
+            <form action="doacaolimpeza.php" method="POST" onsubmit="return valida_form(this)">
+                <div class="form-header">
+                    <div class="title">
+                        <h1>Doação de Limpeza</h1>
+                    </div>
+                    <div class="voltar-button">
+                        <button><a href="listaLimpeza.php" id="pagCadastro">Lista de Doações</a></button>
+                        <button><a href="http://abrigoamigo.atwebpages.com/" id="voltar">Voltar</a></button>
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <div class="input-box">
+                        <label for="cpf">CPF*</label>
+                        <input id="cpf" type="text" name="cpf" placeholder="Digite seu CPF" maxlength="14">
+                    </div>
+                
+                    <div class="input-box">
+                        <label for="detergente">Detergente</label>
+                        <input id="detergente" type="text" name="detergente" placeholder="Quantidade em Unidade" maxlength="2">
+                    </div>
+                    
+                    <div class="input-box">
+                        <label for="sabao">Sabão</label>
+                        <input id="sabao" type="text" name="sabao" placeholder="Quantidade em Unidade" maxlength="2">
+                    </div>
+
+                    <div class="input-box">
+                        <label for="alcool">Álcool</label> 
+                        <input id="alcool" type="text" name="alcool" placeholder="Quantidade em Litro" maxlength="2">
+                    </div>
+                    
+                    <div class="input-box">
+                        <label for="escovad">Escova de Dente</label>
+                        <input id="escovad" type="text" name="escovad" placeholder="Quantidade em Unidade" maxlength="2">
+                    </div>
+                    
+                    <div class="input-box">
+                        <label for="pasta">Pasta de Dente</label>
+                        <input id="pasta" type="text" name="pasta" placeholder="Quantidade em Unidade" maxlength="2">
+                    </div>
+                    
+                    <div class="input-box">
+                        <label for="data">Data</label>
+                        <input id="data" type="date" name="data" placeholder="DD/MM/YYYY" maxlength="10">
+                    </div>
+                    <br><br><br><br><br><br>
+                        <h1 style="font-size:15px">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</h1> 
+                        <div class="voltar-button"><button><a href="http://abrigoamigo.atwebpages.com/doacao.html" id="voltar">Alimentos</a></button></div>
+                        <div class="voltar-button"><button><a href="http://abrigoamigo.atwebpages.com/doacaoroupas.html" id="voltar">Roupas</a></button></div>
+                    </div>
+                    <br>
+
+                <div class="cadastrar-button">
+                    <input type="submit" value="Efetuar doação" id="cadastro">
+                    
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>
+
+<script type="text/javascript" language="javascript">
+
+function valida_form (){
+if(document.getElementById("arroz").value == ""){
+swal({
+    title: 'Campo inválido!',
+    text: 'Preencha o campo Arroz.',
+    icon: 'error'
+});
+document.getElementById("arroz").focus();
+return false
+}
+
+else if(document.getElementById("feijao").value == ""){
+swal({
+    title: 'Campo inválido!',
+    text: 'Preencha o campo Feijão.',
+    icon: 'error'
+});
+document.getElementById("feijao").focus();
+return false
+}
+
+else if(document.getElementById("macarrao").value == ""){
+    swal({
+    title: 'Campo inválido!',
+    text: 'Preencha o campo Macarrão.',
+    icon: 'error'
+});
+document.getElementById("macarrao").focus();
+return false
+}
+
+else if(document.getElementById("acucar").value == ""){
+    swal({
+    title: 'Campo inválido!',
+    text: 'Preencha o campo AÇÚCAR.',
+    icon: 'error'
+});
+document.getElementById("acucar").focus();
+return false
+}
+
+else if(document.getElementById("sal").value == ""){
+    swal({
+    title: 'Campo inválido!',
+    text: 'Preencha o campo SAL.',
+    icon: 'error'
+});
+document.getElementById("sal").focus();
+return false
+}
+
+else if(document.getElementById("farinha").value == ""){
+    swal({
+    title: 'Campo inválido!',
+    text: 'Preencha o campo FARINHA.',
+    icon: 'error'
+});
+document.getElementById("farinha").focus();
+return false
+}
+
+else if(document.getElementById("oleo").value == ""){
+    swal({
+    title: 'Campo inválido!',
+    text: 'Preencha o campo ÓLEO.',
+    icon: 'error'
+});
+document.getElementById("oleo").focus();
+return false
+}
+
+else if(document.getElementById("enlatados").value == ""){
+    swal({
+    title: 'Campo inválido!',
+    text: 'Preencha o campo ENLATADOS.',
+    icon: 'error'
+});
+document.getElementById("enlatados").focus();
+return false
+}
+
+else if(document.getElementById("data").value == ""){
+    swal({
+    title: 'Campo inválido!',
+    text: 'Preencha o campo DATA.',
+    icon: 'error'
+});
+document.getElementById("data").focus();
+return false
+}
+
+
+</script>
